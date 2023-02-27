@@ -126,7 +126,7 @@ class BluetoothConnection internal constructor(private val device: BluetoothDevi
 
 				if (newState == BluetoothProfile.STATE_CONNECTED) {
 					log("Device ${device.address} connected!")
-					gatt.requestConnectionPriority(CONNECTION_PRIORITY_HIGH);
+					gatt?.requestConnectionPriority(CONNECTION_PRIORITY_HIGH);
 					// Notifies that the connection has been established
 					if (!connectionActive) {
 						onConnect?.invoke()
