@@ -2,6 +2,7 @@ package quevedo.soares.leandro.blemadeeasy
 
 import android.annotation.SuppressLint
 import android.bluetooth.*
+import android.bluetooth.BluetoothGatt.CONNECTION_PRIORITY_HIGH
 import android.content.Context
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
@@ -125,7 +126,7 @@ class BluetoothConnection internal constructor(private val device: BluetoothDevi
 
 				if (newState == BluetoothProfile.STATE_CONNECTED) {
 					log("Device ${device.address} connected!")
-
+					gatt.requestConnectionPriority(CONNECTION_PRIORITY_HIGH);
 					// Notifies that the connection has been established
 					if (!connectionActive) {
 						onConnect?.invoke()
